@@ -17,8 +17,6 @@ def get_inputs():
             break
     return bills
 
-
-
 def calc_settlement(bills):
     settlement = {}
     
@@ -37,5 +35,5 @@ def calc_settlement(bills):
         print(settlement)
         
         
-inputs = get_inputs()
-calc_settlement(inputs)
+bills = get_inputs()
+calc_settlement(bills)
