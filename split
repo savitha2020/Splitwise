@@ -1,0 +1,41 @@
+def get_inputs():
+    bills =[]
+    while True:
+        bill ={}
+        while True:
+            name = input("Enter the person's name")
+            amount = int(input("Enter the amount paid by the person"))
+            bill[name] = amount
+            print(bill)
+            to_continue = input("Do you have more particpants? (yes/no)")
+            if to_continue == 'no':
+                bills.append(bill)
+                print(bills)
+                break
+        to_cont = input("Do you have more bills? (yes/no)")
+        if to_cont == 'no':
+            break
+    return bills
+
+
+
+def calc_settlement(bills):
+    settlement = {}
+    
+    for bill in bills:
+        total_amount_spent = 0
+        for participant,amount in bill.items():
+            if participant in settlement.keys():
+                settlement[participant] = settlement[participant] + amount
+            else: 
+              settlement[participant] = amount
+            total_amount_spent += amount
+            #print(settlement)
+            avg_amount_spent = total_amount_spent/len(settlement)
+        for participant,amount in settlement.items():
+            settlement[participant] = avg_amount_spent - amount
+        print(settlement)
+        
+        
+inputs = get_inputs()
+calc_settlement(inputs)
